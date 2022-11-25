@@ -1,9 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-string textoEncriptado = File.ReadAllText("encrypted.txt");
-Console.WriteLine(textoEncriptado);
+Console.WriteLine("Introduce el texto encriptado: ");
+string textoEncriptado = Console.ReadLine();
 
-string[] palabrasEncriptadas = textoEncriptado.Split(" ");
+string[] palabrasEncriptadas = textoEncriptado.Trim().Split(" ");
 List<string> palabras = new ();
 
 foreach (string palabraEncriptada in palabrasEncriptadas) {
