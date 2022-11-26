@@ -1,26 +1,27 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 Console.WriteLine("Introduce el texto encriptado: ");
-string textoEncriptado = Console.ReadLine();
+string? textoEncriptado = Console.ReadLine();
+if (textoEncriptado != null) {
+    string[] palabrasEncriptadas = textoEncriptado.Trim().Split(" ");
+    List<string> palabras = new ();
 
-string[] palabrasEncriptadas = textoEncriptado.Trim().Split(" ");
-List<string> palabras = new ();
-
-foreach (string palabraEncriptada in palabrasEncriptadas) {
-    int posicion = 0;
-    string palabra = "";
-    while (posicion < palabraEncriptada.Length) {
-        string ascii = "";
-        if (palabraEncriptada.Substring(posicion, 1) != "1") {
-            ascii = palabraEncriptada.Substring(posicion, 2);
-            posicion += 2;
-        } else {
-            ascii = palabraEncriptada.Substring(posicion, 3);
-            posicion += 3;
+    foreach (string palabraEncriptada in palabrasEncriptadas) {
+        int posicion = 0;
+        string palabra = "";
+        while (posicion < palabraEncriptada.Length) {
+            string ascii = "";
+            if (palabraEncriptada.Substring(posicion, 1) != "1") {
+                ascii = palabraEncriptada.Substring(posicion, 2);
+                posicion += 2;
+            } else {
+                ascii = palabraEncriptada.Substring(posicion, 3);
+                posicion += 3;
+            }
+            palabra += (char)int.Parse(ascii);
         }
-        palabra += (char)int.Parse(ascii);
+        palabras.Add(palabra);
     }
-    palabras.Add(palabra);
-}
 
-Console.WriteLine(string.Join(" ", palabras));
+    Console.WriteLine(string.Join(" ", palabras));
+}
